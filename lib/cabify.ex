@@ -1,18 +1,7 @@
 defmodule Cabify do
-  @moduledoc """
-  Documentation for Cabify.
-  """
+  @docmodule false
 
-  @doc """
-  Hello world.
+  @db_path Path.expand("./db/cabify_db.json")
 
-  ## Examples
-
-      iex> Cabify.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  def db_path, do: @db_path
 end
