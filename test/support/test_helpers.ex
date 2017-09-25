@@ -3,7 +3,10 @@ defmodule TestHelpers do
 
   import Enum
 
-  def discount_total(items), do: map(items, &(&1.discount)) |> reduce(&(&1 + &2))
+  def discount_total(items) do
+    discounts = map(items, &(&1.discount))
+    reduce(discounts, &(&1 + &2))
+  end
 
   def scan_codes(checkout, []), do: checkout
   def scan_codes(checkout, [code | codes]) do

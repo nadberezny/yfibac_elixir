@@ -1,5 +1,5 @@
 defmodule PricingRuleBehaviour do
   @moduledoc false
 
-  @callback apply(Checkout.t) :: Checkout.t
+  @callback apply_rule(Checkout.t) :: Checkout.t
 end

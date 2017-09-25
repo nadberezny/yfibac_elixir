@@ -9,15 +9,15 @@ defmodule PricingRules.BuyXGetOneFreeTest do
     item = %Checkout.Item{code: "VOUCHER", price: 5}
 
     checkout = %Checkout{items: [item]}
-    checkout = BuyXGetOneFree.apply(checkout)
+    checkout = BuyXGetOneFree.apply_rule(checkout)
     assert discount_total(checkout.items) == 0
 
     checkout = %Checkout{items: [item, item]}
-    checkout = BuyXGetOneFree.apply(checkout)
+    checkout = BuyXGetOneFree.apply_rule(checkout)
     assert discount_total(checkout.items) == 5
 
     checkout = %Checkout{items: [item, item, item]}
-    checkout = BuyXGetOneFree.apply(checkout)
+    checkout = BuyXGetOneFree.apply_rule(checkout)
     assert discount_total(checkout.items) == 5
   end
 end

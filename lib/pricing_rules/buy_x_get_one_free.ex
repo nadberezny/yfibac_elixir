@@ -33,6 +33,6 @@ defmodule PricingRules.BuyXGetOneFree do
 
   defp discount_eligible_items(qty, [item | items], processed) do
     discounted_item = %{item | discount: item.price}
-    discount_eligible_items(qty - 1, items, [discounted_item | processed] )
+    discount_eligible_items(qty - 1, items, [discounted_item | processed])
   end
 end

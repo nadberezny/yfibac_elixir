@@ -11,7 +11,8 @@ defmodule Repository do
 
       defp all do
         {:ok, file} = File.read(Cabify.db_path)
-        {:ok, items} = Poison.decode(file, as: %{relation() => [returning_type()]})
+        decode_params = %{relation() => [returning_type()]}
+        {:ok, items} = Poison.decode(file, as: decode_params)
         items[relation()]
       end
 

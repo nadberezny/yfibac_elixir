@@ -1,5 +1,5 @@
 defmodule PricingRuleRepo do
-  @docmodule false
+  @moduledoc false
 
   @behaviour RepositoryBehaviour
 

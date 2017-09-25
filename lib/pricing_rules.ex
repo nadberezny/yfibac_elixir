@@ -12,20 +12,22 @@ defmodule PricingRules do
 
       import Enum
 
-      def apply(checkout) do
+      def apply_rule(checkout) do
         %{checkout |
           items: calculate_items(checkout.items)
         }
       end
 
       defp calculate_items(items) do
-        for group <- group_by_code(items) do
-          calculate_item_group(group)
-        end |> flatten
+        groups = group_by_code(items)
+        calculated_groups = map(groups, &(calculate_item_group(&1)))
+        flatten(calculated_groups)
       end
 
-      defp group_by_code(items),
-        do: group_by(items, &(&1.code)) |> to_list
+      defp group_by_code(items) do
+        groups = group_by(items, &(&1.code))
+        to_list(groups)
+      end
 
       defp flatten(groups),
         do: reduce(groups, &(&1 ++ &2))

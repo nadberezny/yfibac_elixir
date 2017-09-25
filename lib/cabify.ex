@@ -1,5 +1,5 @@
 defmodule Cabify do
-  @docmodule false
+  @moduledoc false
 
   @db_path Path.expand("./db/cabify_db.json")
 

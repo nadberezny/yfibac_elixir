@@ -1,8 +1,8 @@
 defmodule Checkout do
   @moduledoc """
   Provides interface for code scanning and total calculation.
-  Pricing rules by default are taken from PricingRules.Manifest. They also can be passed
-  to Struct directly.
+  Pricing rules by default are taken from PricingRules.Manifest.
+  They also can be passed to Struct directly.
   Through all scan operation one data type is passed, which is Checkout.t
 
   ## Examples
@@ -55,7 +55,7 @@ defmodule Checkout do
   defp apply_pricing_rules(checkout, []),
     do: checkout
   defp apply_pricing_rules(checkout, [rule | rules]),
-    do: apply_pricing_rules(rule.apply(checkout), rules)
+    do: apply_pricing_rules(rule.apply_rule(checkout), rules)
 
   defp calculate_total(checkout) do
     %{checkout |
@@ -64,7 +64,7 @@ defmodule Checkout do
   end
 
   defp items_total(items) do
-    map(items, &(&1.price - &1.discount))
-    |> reduce(&(&1 + &2))
+    prices = map(items, &(&1.price - &1.discount))
+    reduce(prices, &(&1 + &2))
   end
 end
