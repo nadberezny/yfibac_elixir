@@ -19,7 +19,9 @@ defmodule Cabify.Mixfile do
 
   defp deps do
     [
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:dogma, "~> 0.1", only: :dev},
       {:poison, "~> 3.1"}
     ]
   end
