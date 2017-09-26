@@ -13,7 +13,9 @@ defmodule Checkout.Item do
 
   @spec find(String.t) :: __MODULE__.t
   def find(code) do
-    {:ok, item} = ProductRepo.find_by_code(code)
-    item
+    _find(ProductRepo.find_by_code(code))
   end
+
+  defp _find({:ok, item}), do: item
+  defp _find({:error, _}), do: Checkout.InvalidCodeError
 end
